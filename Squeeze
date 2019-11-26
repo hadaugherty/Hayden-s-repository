@@ -1,0 +1,44 @@
+declare lower;
+
+###################
+# MACD histogram
+###################
+
+def fastLength = 12;
+def slowLength = 26;
+def MACD_Length = 9;
+def averageType = AverageType.EXPONENTIAL;
+def Value = MovingAverage(averageType, close, fastLength) - MovingAverage(averageType, close, slowLength);
+def Avg = MovingAverage(averageType, Value, MACD_Length);
+plot Diff = Value - Avg;
+Diff.SetDefaultColor(GetColor(5));
+Diff.SetPaintingStrategy(PaintingStrategy.HISTOGRAM);
+Diff.SetLineWeight(3);
+Diff.DefineColor("above going higher", Color.GREEN);
+Diff.DefineColor("above going lower", Color.DARK_RED);
+Diff.DefineColor("below going lower", Color.RED);
+Diff.DefineColor("below going up", Color.DARK_GREEN);
+Diff.AssignValueColor(if Diff >= 0 then if Diff > Diff[1] then Diff.Color("above going higher") else Diff.Color("above going lower") else if Diff < Diff[1] then Diff.Color("below going lower") else Diff.Color("below going up"));
+
+###################
+# Squeeze (dots)
+###################
+
+input Length = 20; # Length for Avg True Range & Std. Dev Calcs
+input Price = Close; # type of price to use
+input minPriceMove = 1; # for scaling
+input priceIncrement = 0.01;
+input nK = 1.5; # Keltner Channel ATRs from Average
+input nBB = 2; # Bollinger Band Std. Devs. from Average
+input AlertLine = 1; # BBS_Index level at which to issue alerts
+input SqueezeOnColor = 2;
+input SqueezeOffColor = 6;
+
+def ATR = Average(TrueRange(high,  close,  low),  Length);
+def SDev = StDev(Price, Length);
+def Denom = (nK * ATR);
+def BBS_Ind = If (Denom <> 0, ((nBB * SDev) / Denom), 0);
+plot BBS_Index = 0;
+BBS_Index.AssignValueColor(if BBS_Ind < AlertLine then Color.RED else Color.GREEN);
+BBS_Index.SetStyle(4);
+BBS_Index.SetLineWeight(2);
