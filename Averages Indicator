@@ -1,0 +1,48 @@
+input MA_1_length = 9; #exponential
+input MA_2_length = 20; #simple
+input MA_3_length = 49; #exponential
+input MA_4_length = 99; #exponential
+input MA_5_length = 200; #simple 
+
+input MA_1_closeType = ohlc4;
+input MA_2_closeType = ohlc4;
+input MA_3_closeType = ohlc4;
+input MA_4_closeType = ohlc4;
+input MA_5_closeType = ohlc4;
+
+def MA_1_avg = ExpAverage(MA_1_closeType, MA_1_length);
+def MA_2_avg = Average(MA_2_closeType, MA_2_length);
+def MA_3_avg = ExpAverage(MA_3_closeType, MA_3_length);
+def MA_4_avg = ExpAverage(MA_4_closeType, MA_4_length);
+def MA_5_avg = Average(MA_5_closeType, MA_5_length);
+
+def currentPrice = close;
+
+def MA_1_above = if currentPrice > MA_1_avg then 1 else 0;
+def MA_1_below = if currentPrice <= MA_1_avg then 1 else 0;
+AddLabel(MA_1_above, MA_1_length + " ema: " + MA_1_avg, COLOR.DARK_GREEN);
+AddLabel(MA_1_below, MA_1_length + " ema: " + MA_1_avg, COLOR.DARK_RED);
+
+def MA_2_above = if currentPrice > MA_2_avg then 1 else 0;
+def MA_2_below = if currentPrice <= MA_2_avg then 1 else 0;
+AddLabel(MA_2_above, MA_2_length + " sma: " + MA_2_avg, COLOR.DARK_GREEN);
+AddLabel(MA_2_below, MA_2_length + " sma: " + MA_2_avg, COLOR.DARK_RED);
+
+def MA_3_above = if currentPrice > MA_3_avg then 1 else 0;
+def MA_3_below = if currentPrice <= MA_3_avg then 1 else 0;
+AddLabel(MA_3_above, MA_3_length + " ema: " + MA_3_avg, COLOR.DARK_GREEN);
+AddLabel(MA_3_below, MA_3_length + " ema: " + MA_3_avg, COLOR.DARK_RED);
+
+def MA_4_above = if currentPrice > MA_4_avg then 1 else 0;
+def MA_4_below = if currentPrice <= MA_4_avg then 1 else 0;
+AddLabel(MA_4_above, MA_4_length + " ema: " + MA_4_avg, COLOR.DARK_GREEN);
+AddLabel(MA_4_below, MA_4_length + " ema: " + MA_4_avg, COLOR.DARK_RED);
+
+def MA_5_above = if currentPrice > MA_5_avg then 1 else 0;
+def MA_5_below = if currentPrice <= MA_5_avg then 1 else 0;
+AddLabel(MA_4_above, MA_5_length + " sma: " + MA_5_avg, COLOR.DARK_GREEN);
+AddLabel(MA_4_below, MA_5_length + " sma: " + MA_5_avg, COLOR.DARK_RED);
+
+
+
+
