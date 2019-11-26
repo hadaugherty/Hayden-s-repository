@@ -1,0 +1,1514 @@
+package com.example.android.keyandchordtranspose;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+    }
+
+
+    public void transposeButton(View view) {
+        Spinner spinnerkey1 = (Spinner) findViewById(R.id.dropList1);
+        Spinner spinnerkey2 = (Spinner) findViewById(R.id.dropList2);
+        Spinner spinnerkey3 = (Spinner) findViewById(R.id.dropList3);
+        Spinner spinnerkey4 = (Spinner) findViewById(R.id.dropList4);
+        Spinner spinnerkey5 = (Spinner) findViewById(R.id.dropList5);
+        Spinner spinnerkey6 = (Spinner) findViewById(R.id.dropList6);
+
+        Spinner spinnerstep1 = (Spinner) findViewById(R.id.step1);
+        Spinner spinnerstep2 = (Spinner) findViewById(R.id.step2);
+        Spinner spinnerstep3 = (Spinner) findViewById(R.id.step3);
+        Spinner spinnerstep4 = (Spinner) findViewById(R.id.step4);
+        Spinner spinnerstep5 = (Spinner) findViewById(R.id.step5);
+        Spinner spinnerstep6 = (Spinner) findViewById(R.id.step6);
+
+        String key1 = spinnerkey1.getSelectedItem().toString();
+        String key2 = spinnerkey2.getSelectedItem().toString();
+        String key3 = spinnerkey3.getSelectedItem().toString();
+        String key4 = spinnerkey4.getSelectedItem().toString();
+        String key5 = spinnerkey5.getSelectedItem().toString();
+        String key6 = spinnerkey6.getSelectedItem().toString();
+
+        String step1 = spinnerstep1.getSelectedItem().toString();
+        String step2 = spinnerstep2.getSelectedItem().toString();
+        String step3 = spinnerstep3.getSelectedItem().toString();
+        String step4 = spinnerstep4.getSelectedItem().toString();
+        String step5 = spinnerstep5.getSelectedItem().toString();
+        String step6 = spinnerstep6.getSelectedItem().toString();
+
+        String t1 = transposed1(key1, step1);
+        String t2 = transposed2(key2, step2);
+        String t3 = transposed3(key3, step3);
+        String t4 = transposed4(key4, step4);
+        String t5 = transposed5(key5, step5);
+        String t6 = transposed6(key6, step6);
+
+        displayResult1(t1);
+        displayResult2(t2);
+        displayResult3(t3);
+        displayResult4(t4);
+        displayResult5(t5);
+        displayResult6(t6);
+
+    }
+
+    /**
+     * Display the messages in the results
+     */
+    private void displayResult1(String message) {
+        TextView Result1 = (TextView) findViewById(R.id.result1);
+        Result1.setText(message);
+
+    }
+
+    private void displayResult2(String message) {
+        TextView Result2 = (TextView) findViewById(R.id.result2);
+        Result2.setText(message);
+
+    }
+
+    private void displayResult3(String message) {
+        TextView Result3 = (TextView) findViewById(R.id.result3);
+        Result3.setText(message);
+
+    }
+
+    private void displayResult4(String message) {
+        TextView Result4 = (TextView) findViewById(R.id.result4);
+        Result4.setText(message);
+
+    }
+
+    private void displayResult5(String message) {
+        TextView Result5 = (TextView) findViewById(R.id.result5);
+        Result5.setText(message);
+
+    }
+
+    private void displayResult6(String message) {
+        TextView Result6 = (TextView) findViewById(R.id.result6);
+        Result6.setText(message);
+    }
+
+        /** If statements for the 1st row transposition */
+
+        public String transposed1 (String key1, String step1)
+        {
+
+
+            String key1string = key1;
+            String step1string = step1;
+            String t1 = "";
+
+            /**For the .5 steps */
+
+            if (key1string.equals("C") && step1string.equals("0 steps")) {
+                t1 = "C";
+            }
+            else if (key1string.equals("C") && step1string.equals(".5 steps")) {
+                t1 = "B";
+            } else if (key1string.equals("C#/Db") && step1string.equals(".5 steps")) {
+                t1 = "C";
+            } else if (key1string.equals("D") && step1string.equals(".5 steps")) {
+                t1 = "C#";
+            } else if (key1string.equals("Eb") && step1string.equals(".5 steps")) {
+                t1 = "D";
+            } else if (key1string.equals("E") && step1string.equals(".5 steps")) {
+                t1 = "Eb/D#";
+            } else if (key1string.equals("F") && step1string.equals(".5 steps")) {
+                t1 = "E";
+            } else if (key1string.equals("F#/Gb") && step1string.equals(".5 steps")) {
+                t1 = "F";
+
+            } else if (key1string.equals("G") && step1string.equals(".5 steps")) {
+                t1 = "F#";
+            } else if (key1string.equals("Ab/G#") && step1string.equals(".5 steps")) {
+                t1 = "G";
+            } else if (key1string.equals("A") && step1string.equals(".5 steps")) {
+                t1 = "Ab";
+            } else if (key1string.equals("Bb") && step1string.equals(".5 steps")) {
+                t1 = "A";
+            } else if (key1string.equals("B") && step1string.equals(".5 steps")) {
+                t1 = "Bb";
+            }
+
+            /**FOR 1 WHOLE STEP */
+
+
+            if (key1string.equals("C") && step1string.equals("1 step")) {
+                t1 = "Bb";
+            } else if (key1string.equals("C#/Db") && step1string.equals("1 step")) {
+                t1 = "B";
+            } else if (key1string.equals("D") && step1string.equals("1 step")) {
+                t1 = "C";
+            } else if (key1string.equals("Eb/D#") && step1string.equals("1 step")) {
+                t1 = "C#";
+            } else if (key1string.equals("E") && step1string.equals("1 step")) {
+                t1 = "D";
+            } else if (key1string.equals("F") && step1string.equals("1 step")) {
+                t1 = "Eb";
+            } else if (key1string.equals("F#/Gb") && step1string.equals("1 step")) {
+                t1 = "E";
+
+            } else if (key1string.equals("G") && step1string.equals("1 step")) {
+                t1 = "F";
+            } else if (key1string.equals("Ab/G#") && step1string.equals("1 step")) {
+                t1 = "F#";
+            } else if (key1string.equals("A") && step1string.equals("1 step")) {
+                t1 = "G";
+            } else if (key1string.equals("Bb") && step1string.equals("1 step")) {
+                t1 = "Ab";
+            } else if (key1string.equals("B") && step1string.equals("1 step")) {
+                t1 = "A";
+            }
+
+
+            /** FOR 1.5 STEPS */
+
+            if (key1string.equals("C") && step1string.equals("1.5 steps")) {
+                t1 = "A";
+            } else if (key1string.equals("C#/Db") && step1string.equals("1.5 steps")) {
+                t1 = "Bb";
+            } else if (key1string.equals("D") && step1string.equals("1.5 steps")) {
+                t1 = "B";
+            } else if (key1string.equals("Eb/D#") && step1string.equals("1.5 steps")) {
+                t1 = "C";
+            } else if (key1string.equals("E") && step1string.equals("1.5 steps")) {
+                t1 = "C#";
+            } else if (key1string.equals("F") && step1string.equals("1.5 steps")) {
+                t1 = "D";
+            } else if (key1string.equals("F#/Gb") && step1string.equals("1.5 steps")) {
+                t1 = "Eb";
+
+            } else if (key1string.equals("G") && step1string.equals("1.5 steps")) {
+                t1 = "E";
+            } else if (key1string.equals("Ab/G#") && step1string.equals("1.5 steps")) {
+                t1 = "F";
+            } else if (key1string.equals("A") && step1string.equals("1.5 steps")) {
+                t1 = "F#";
+            } else if (key1string.equals("Bb") && step1string.equals("1.5 steps")) {
+                t1 = "G";
+            } else if (key1string.equals("B") && step1string.equals("1.5 steps")) {
+                t1 = "Ab";
+            }
+
+
+            /** FOR 2 STEPS */
+
+
+            if (key1string.equals("C") && step1string.equals("2 steps")) {
+                t1 = "Ab";
+            } else if (key1string.equals("C#/Db") && step1string.equals("2 steps")) {
+                t1 = "A";
+            } else if (key1string.equals("D") && step1string.equals("2 steps")) {
+                t1 = "Bb";
+            } else if (key1string.equals("Eb/D#") && step1string.equals("2 steps")) {
+                t1 = "B";
+            } else if (key1string.equals("E") && step1string.equals("2 steps")) {
+                t1 = "C";
+            } else if (key1string.equals("F") && step1string.equals("2 steps")) {
+                t1 = "C#";
+            } else if (key1string.equals("F#/Gb") && step1string.equals("2 steps")) {
+                t1 = "D";
+
+            } else if (key1string.equals("G") && step1string.equals("2 steps")) {
+                t1 = "Eb";
+            } else if (key1string.equals("Ab/G#") && step1string.equals("2 steps")) {
+                t1 = "E";
+            } else if (key1string.equals("A") && step1string.equals("2 steps")) {
+                t1 = "F";
+            } else if (key1string.equals("Bb") && step1string.equals("2 steps")) {
+                t1 = "F#";
+            } else if (key1string.equals("B") && step1string.equals("2 steps")) {
+                t1 = "G";
+            }
+
+
+            /** for 2.5 steps */
+
+
+            if (key1string.equals("C") && step1string.equals("2.5 steps")) {
+                t1 = "G";
+            } else if (key1string.equals("C#/Db") && step1string.equals("2.5 steps")) {
+                t1 = "Ab";
+            } else if (key1string.equals("D") && step1string.equals("2.5 steps")) {
+                t1 = "A";
+            } else if (key1string.equals("Eb/D#") && step1string.equals("2.5 steps")) {
+                t1 = "Bb";
+            } else if (key1string.equals("E") && step1string.equals("2.5 steps")) {
+                t1 = "B";
+            } else if (key1string.equals("F") && step1string.equals("2.5 steps")) {
+                t1 = "C";
+            } else if (key1string.equals("F#/Gb") && step1string.equals("2.5 steps")) {
+                t1 = "C#";
+
+            } else if (key1string.equals("G") && step1string.equals("2.5 steps")) {
+                t1 = "D";
+            } else if (key1string.equals("Ab/G#") && step1string.equals("2.5 steps")) {
+                t1 = "Eb";
+            } else if (key1string.equals("A") && step1string.equals("2.5 steps")) {
+                t1 = "E";
+            } else if (key1string.equals("Bb") && step1string.equals("2.5 steps")) {
+                t1 = "F";
+            } else if (key1string.equals("B") && step1string.equals("2.5 steps")) {
+                t1 = "F#";
+            }
+
+
+            /** For 3 steps */
+
+
+            if (key1string.equals("C") && step1string.equals("3 steps")) {
+                t1 = "F#";
+            } else if (key1string.equals("C#/Db") && step1string.equals("3 steps")) {
+                t1 = "G";
+            } else if (key1string.equals("D") && step1string.equals("3 steps")) {
+                t1 = "Ab";
+            } else if (key1string.equals("Eb/D#") && step1string.equals("3 steps")) {
+                t1 = "A";
+            } else if (key1string.equals("E") && step1string.equals("3 steps")) {
+                t1 = "Bb";
+            } else if (key1string.equals("F") && step1string.equals("3 steps")) {
+                t1 = "B";
+            } else if (key1string.equals("F#/Gb") && step1string.equals("3 steps")) {
+                t1 = "C";
+
+            } else if (key1string.equals("G") && step1string.equals("3 steps")) {
+                t1 = "C#";
+            } else if (key1string.equals("Ab/G#") && step1string.equals("3 steps")) {
+                t1 = "D";
+            } else if (key1string.equals("A") && step1string.equals("3 steps")) {
+                t1 = "Eb";
+            } else if (key1string.equals("Bb") && step1string.equals("3 steps")) {
+                t1 = "E";
+            } else if (key1string.equals("B") && step1string.equals("3 steps")) {
+                t1 = "F";
+            }
+
+
+            /** For 3.5 steps */
+
+
+            if (key1string.equals("C") && step1string.equals("3.5 steps")) {
+                t1 = "F";
+            } else if (key1string.equals("C#/Db") && step1string.equals("3.5 steps")) {
+                t1 = "F#";
+            } else if (key1string.equals("D") && step1string.equals("3.5 steps")) {
+                t1 = "G";
+            } else if (key1string.equals("Eb/D#") && step1string.equals("3.5 steps")) {
+                t1 = "Ab";
+            } else if (key1string.equals("E") && step1string.equals("3.5 steps")) {
+                t1 = "A";
+            } else if (key1string.equals("F") && step1string.equals("3.5 steps")) {
+                t1 = "Bb";
+            } else if (key1string.equals("F#/Gb") && step1string.equals("3.5 steps")) {
+                t1 = "B";
+
+            } else if (key1string.equals("G") && step1string.equals("3.5 steps")) {
+                t1 = "C";
+            } else if (key1string.equals("Ab/G#") && step1string.equals("3.5 steps")) {
+                t1 = "C#";
+            } else if (key1string.equals("A") && step1string.equals("3.5 steps")) {
+                t1 = "D";
+            } else if (key1string.equals("Bb") && step1string.equals("3.5 steps")) {
+                t1 = "Eb";
+            } else if (key1string.equals("B") && step1string.equals("3.5 steps")) {
+                t1 = "E";
+            }
+
+            if (step1string.equals("0 steps")){
+                t1=key1string;
+            }
+
+            return t1;
+
+        }
+
+
+/** for the 2nd row */
+
+
+        public String transposed2 (String key2, String step2)
+        {
+
+
+            String key2string = key2;
+            String step2string = step2;
+            String t2 = "";
+
+            /**For the .5 steps */
+
+            if (key2string.equals("C") && step2string.equals("0 steps")) {
+                t2 = "C";
+            }
+          else if (key2string.equals("C") && step2string.equals(".5 steps")) {
+                t2 = "B";
+            } else if (key2string.equals("C#/Db") && step2string.equals(".5 steps")) {
+                t2 = "C";
+            } else if (key2string.equals("D") && step2string.equals(".5 steps")) {
+                t2 = "C#";
+            } else if (key2string.equals("Eb/D#") && step2string.equals(".5 steps")) {
+                t2 = "D";
+            } else if (key2string.equals("E") && step2string.equals(".5 steps")) {
+                t2 = "Eb";
+            } else if (key2string.equals("F") && step2string.equals(".5 steps")) {
+                t2 = "E";
+            } else if (key2string.equals("F#/Gb") && step2string.equals(".5 steps")) {
+                t2 = "F";
+
+            } else if (key2string.equals("G") && step2string.equals(".5 steps")) {
+                t2 = "F#";
+            } else if (key2string.equals("Ab/G#") && step2string.equals(".5 steps")) {
+                t2 = "G";
+            } else if (key2string.equals("A") && step2string.equals(".5 steps")) {
+                t2 = "Ab";
+            } else if (key2string.equals("Bb") && step2string.equals(".5 steps")) {
+                t2 = "A";
+            } else if (key2string.equals("B") && step2string.equals(".5 steps")) {
+                t2 = "Bb";
+            }
+
+            /**FOR 1 WHOLE STEP */
+
+
+            if (key2string.equals("C") && step2string.equals("1 step")) {
+                t2 = "Bb";
+            } else if (key2string.equals("C#/Db") && step2string.equals("1 step")) {
+                t2 = "B";
+            } else if (key2string.equals("D") && step2string.equals("1 step")) {
+                t2 = "C";
+            } else if (key2string.equals("Eb/D#") && step2string.equals("1 step")) {
+                t2 = "C#";
+            } else if (key2string.equals("E") && step2string.equals("1 step")) {
+                t2 = "D";
+            } else if (key2string.equals("F") && step2string.equals("1 step")) {
+                t2 = "Eb";
+            } else if (key2string.equals("F#/Gb") && step2string.equals("1 step")) {
+                t2 = "E";
+
+            } else if (key2string.equals("G") && step2string.equals("1 step")) {
+                t2 = "F";
+            } else if (key2string.equals("Ab/G#") && step2string.equals("1 step")) {
+                t2 = "F#";
+            } else if (key2string.equals("A") && step2string.equals("1 step")) {
+                t2 = "G";
+            } else if (key2string.equals("Bb") && step2string.equals("1 step")) {
+                t2 = "Ab";
+            } else if (key2string.equals("B") && step2string.equals("1 step")) {
+                t2 = "A";
+            }
+
+
+            /** FOR 1.5 STEPS */
+
+            if (key2string.equals("C") && step2string.equals("1.5 steps")) {
+                t2 = "A";
+            } else if (key2string.equals("C#/Db") && step2string.equals("1.5 steps")) {
+                t2 = "Bb";
+            } else if (key2string.equals("D") && step2string.equals("1.5 steps")) {
+                t2 = "B";
+            } else if (key2string.equals("Eb/D#") && step2string.equals("1.5 steps")) {
+                t2 = "C";
+            } else if (key2string.equals("E") && step2string.equals("1.5 steps")) {
+                t2 = "C#";
+            } else if (key2string.equals("F") && step2string.equals("1.5 steps")) {
+                t2 = "D";
+            } else if (key2string.equals("F#/Gb") && step2string.equals("1.5 steps")) {
+                t2 = "Eb";
+
+            } else if (key2string.equals("G") && step2string.equals("1.5 steps")) {
+                t2 = "E";
+            } else if (key2string.equals("Ab/G#") && step2string.equals("1.5 steps")) {
+                t2 = "F";
+            } else if (key2string.equals("A") && step2string.equals("1.5 steps")) {
+                t2 = "F#";
+            } else if (key2string.equals("Bb") && step2string.equals("1.5 steps")) {
+                t2 = "G";
+            } else if (key2string.equals("B") && step2string.equals("1.5 steps")) {
+                t2 = "Ab";
+            }
+
+
+            /** FOR 2 STEPS */
+
+
+            if (key2string.equals("C") && step2string.equals("2 steps")) {
+                t2 = "Ab";
+            } else if (key2string.equals("C#/Db") && step2string.equals("2 steps")) {
+                t2 = "A";
+            } else if (key2string.equals("D") && step2string.equals("2 steps")) {
+                t2 = "Bb";
+            } else if (key2string.equals("Eb/D#") && step2string.equals("2 steps")) {
+                t2 = "B";
+            } else if (key2string.equals("E") && step2string.equals("2 steps")) {
+                t2 = "C";
+            } else if (key2string.equals("F") && step2string.equals("2 steps")) {
+                t2 = "C#";
+            } else if (key2string.equals("F#/Gb") && step2string.equals("2 steps")) {
+                t2 = "D";
+
+            } else if (key2string.equals("G") && step2string.equals("2 steps")) {
+                t2 = "Eb";
+            } else if (key2string.equals("Ab/G#") && step2string.equals("2 steps")) {
+                t2 = "E";
+            } else if (key2string.equals("A") && step2string.equals("2 steps")) {
+                t2 = "F";
+            } else if (key2string.equals("Bb") && step2string.equals("2 steps")) {
+                t2 = "F#";
+            } else if (key2string.equals("B") && step2string.equals("2 steps")) {
+                t2 = "G";
+            }
+
+
+            /** for 2.5 steps */
+
+
+            if (key2string.equals("C") && step2string.equals("2.5 steps")) {
+                t2 = "G";
+            } else if (key2string.equals("C#/Db") && step2string.equals("2.5 steps")) {
+                t2 = "Ab";
+            } else if (key2string.equals("D") && step2string.equals("2.5 steps")) {
+                t2 = "A";
+            } else if (key2string.equals("Eb/D#") && step2string.equals("2.5 steps")) {
+                t2 = "Bb";
+            } else if (key2string.equals("E") && step2string.equals("2.5 steps")) {
+                t2 = "B";
+            } else if (key2string.equals("F") && step2string.equals("2.5 steps")) {
+                t2 = "C";
+            } else if (key2string.equals("F#/Gb") && step2string.equals("2.5 steps")) {
+                t2 = "C#";
+
+            } else if (key2string.equals("G") && step2string.equals("2.5 steps")) {
+                t2 = "D";
+            } else if (key2string.equals("Ab/G#") && step2string.equals("2.5 steps")) {
+                t2 = "Eb";
+            } else if (key2string.equals("A") && step2string.equals("2.5 steps")) {
+                t2 = "E";
+            } else if (key2string.equals("Bb") && step2string.equals("2.5 steps")) {
+                t2 = "F";
+            } else if (key2string.equals("B") && step2string.equals("2.5 steps")) {
+                t2 = "F#";
+            }
+
+
+            /** For 3 steps */
+
+
+            if (key2string.equals("C") && step2string.equals("3 steps")) {
+                t2 = "F#";
+            } else if (key2string.equals("C#/Db") && step2string.equals("3 steps")) {
+                t2 = "G";
+            } else if (key2string.equals("D") && step2string.equals("3 steps")) {
+                t2 = "Ab";
+            } else if (key2string.equals("Eb/D#") && step2string.equals("3 steps")) {
+                t2 = "A";
+            } else if (key2string.equals("E") && step2string.equals("3 steps")) {
+                t2 = "Bb";
+            } else if (key2string.equals("F") && step2string.equals("3 steps")) {
+                t2 = "B";
+            } else if (key2string.equals("F#/Gb") && step2string.equals("3 steps")) {
+                t2 = "C";
+
+            } else if (key2string.equals("G") && step2string.equals("3 steps")) {
+                t2 = "C#";
+            } else if (key2string.equals("Ab/G#") && step2string.equals("3 steps")) {
+                t2 = "D";
+            } else if (key2string.equals("A") && step2string.equals("3 steps")) {
+                t2 = "Eb";
+            } else if (key2string.equals("Bb") && step2string.equals("3 steps")) {
+                t2 = "E";
+            } else if (key2string.equals("B") && step2string.equals("3 steps")) {
+                t2 = "F";
+            }
+
+
+            /** For 3.5 steps */
+
+
+            if (key2string.equals("C") && step2string.equals("3.5 steps")) {
+                t2 = "F";
+            } else if (key2string.equals("C#/Db") && step2string.equals("3.5 steps")) {
+                t2 = "F#";
+            } else if (key2string.equals("D") && step2string.equals("3.5 steps")) {
+                t2 = "G";
+            } else if (key2string.equals("Eb/D#") && step2string.equals("3.5 steps")) {
+                t2 = "Ab";
+            } else if (key2string.equals("E") && step2string.equals("3.5 steps")) {
+                t2 = "A";
+            } else if (key2string.equals("F") && step2string.equals("3.5 steps")) {
+                t2 = "Bb";
+            } else if (key2string.equals("F#/Gb") && step2string.equals("3.5 steps")) {
+                t2 = "B";
+
+            } else if (key2string.equals("G") && step2string.equals("3.5 steps")) {
+                t2 = "C";
+            } else if (key2string.equals("Ab/G#") && step2string.equals("3.5 steps")) {
+                t2 = "C#";
+            } else if (key2string.equals("A") && step2string.equals("3.5 steps")) {
+                t2 = "D";
+            } else if (key2string.equals("Bb") && step2string.equals("3.5 steps")) {
+                t2 = "Eb";
+            } else if (key2string.equals("B") && step2string.equals("3.5 steps")) {
+                t2 = "E";
+            }
+
+
+            if (step2string.equals("0 steps")){
+                t2=key2string;
+            }
+            return t2;
+
+        }
+
+
+/** for 3rd row */
+
+        public String transposed3 (String key3, String step3)
+        {
+
+
+            String key3string = key3;
+            String step3string = step3;
+            String t3 = "";
+
+            /**For the .5 steps */
+
+            if (key3string.equals("C") && step3string.equals("0 steps")) {
+                t3 = "C";
+            }
+         else   if (key3string.equals("C") && step3string.equals(".5 steps")) {
+                t3 = "B";
+            } else if (key3string.equals("C#/Db") && step3string.equals(".5 steps")) {
+                t3 = "C";
+            } else if (key3string.equals("D") && step3string.equals(".5 steps")) {
+                t3 = "C#";
+            } else if (key3string.equals("Eb/D#") && step3string.equals(".5 steps")) {
+                t3 = "D";
+            } else if (key3string.equals("E") && step3string.equals(".5 steps")) {
+                t3 = "Eb";
+            } else if (key3string.equals("F") && step3string.equals(".5 steps")) {
+                t3 = "E";
+            } else if (key3string.equals("F#/Gb") && step3string.equals(".5 steps")) {
+                t3 = "F";
+
+            } else if (key3string.equals("G") && step3string.equals(".5 steps")) {
+                t3 = "F#";
+            } else if (key3string.equals("Ab/G#") && step3string.equals(".5 steps")) {
+                t3 = "G";
+            } else if (key3string.equals("A") && step3string.equals(".5 steps")) {
+                t3 = "Ab";
+            } else if (key3string.equals("Bb") && step3string.equals(".5 steps")) {
+                t3 = "A";
+            } else if (key3string.equals("B") && step3string.equals(".5 steps")) {
+                t3 = "Bb";
+            }
+
+            /**FOR 1 WHOLE STEP */
+
+
+            if (key3string.equals("C") && step3string.equals("1 step")) {
+                t3 = "Bb";
+            } else if (key3string.equals("C#/Db") && step3string.equals("1 step")) {
+                t3 = "B";
+            } else if (key3string.equals("D") && step3string.equals("1 step")) {
+                t3 = "C";
+            } else if (key3string.equals("Eb/D#") && step3string.equals("1 step")) {
+                t3 = "C#";
+            } else if (key3string.equals("E") && step3string.equals("1 step")) {
+                t3 = "D";
+            } else if (key3string.equals("F") && step3string.equals("1 step")) {
+                t3 = "Eb";
+            } else if (key3string.equals("F#/Gb") && step3string.equals("1 step")) {
+                t3 = "E";
+
+            } else if (key3string.equals("G") && step3string.equals("1 step")) {
+                t3 = "F";
+            } else if (key3string.equals("Ab/G#") && step3string.equals("1 step")) {
+                t3 = "F#";
+            } else if (key3string.equals("A") && step3string.equals("1 step")) {
+                t3 = "G";
+            } else if (key3string.equals("Bb") && step3string.equals("1 step")) {
+                t3 = "Ab";
+            } else if (key3string.equals("B") && step3string.equals("1 step")) {
+                t3 = "A";
+            }
+
+
+            /** FOR 1.5 STEPS */
+
+            if (key3string.equals("C") && step3string.equals("1.5 steps")) {
+                t3 = "A";
+            } else if (key3string.equals("C#/Db") && step3string.equals("1.5 steps")) {
+                t3 = "Bb";
+            } else if (key3string.equals("D") && step3string.equals("1.5 steps")) {
+                t3 = "B";
+            } else if (key3string.equals("Eb/D#") && step3string.equals("1.5 steps")) {
+                t3 = "C";
+            } else if (key3string.equals("E") && step3string.equals("1.5 steps")) {
+                t3 = "C#";
+            } else if (key3string.equals("F") && step3string.equals("1.5 steps")) {
+                t3 = "D";
+            } else if (key3string.equals("F#/Gb") && step3string.equals("1.5 steps")) {
+                t3 = "Eb";
+
+            } else if (key3string.equals("G") && step3string.equals("1.5 steps")) {
+                t3 = "E";
+            } else if (key3string.equals("Ab/G#") && step3string.equals("1.5 steps")) {
+                t3 = "F";
+            } else if (key3string.equals("A") && step3string.equals("1.5 steps")) {
+                t3 = "F#";
+            } else if (key3string.equals("Bb") && step3string.equals("1.5 steps")) {
+                t3 = "G";
+            } else if (key3string.equals("B") && step3string.equals("1.5 steps")) {
+                t3 = "Ab";
+            }
+
+
+            /** FOR 2 STEPS */
+
+
+            if (key3string.equals("C") && step3string.equals("2 steps")) {
+                t3 = "Ab";
+            } else if (key3string.equals("C#/Db") && step3string.equals("2 steps")) {
+                t3 = "A";
+            } else if (key3string.equals("D") && step3string.equals("2 steps")) {
+                t3 = "Bb";
+            } else if (key3string.equals("Eb/D#") && step3string.equals("2 steps")) {
+                t3 = "B";
+            } else if (key3string.equals("E") && step3string.equals("2 steps")) {
+                t3 = "C";
+            } else if (key3string.equals("F") && step3string.equals("2 steps")) {
+                t3 = "C#";
+            } else if (key3string.equals("F#/Gb") && step3string.equals("2 steps")) {
+                t3 = "D";
+
+            } else if (key3string.equals("G") && step3string.equals("2 steps")) {
+                t3 = "Eb";
+            } else if (key3string.equals("Ab/G#") && step3string.equals("2 steps")) {
+                t3 = "E";
+            } else if (key3string.equals("A") && step3string.equals("2 steps")) {
+                t3 = "F";
+            } else if (key3string.equals("Bb") && step3string.equals("2 steps")) {
+                t3 = "F#";
+            } else if (key3string.equals("B") && step3string.equals("2 steps")) {
+                t3 = "G";
+            }
+
+
+            /** for 2.5 steps */
+
+
+            if (key3string.equals("C") && step3string.equals("2.5 steps")) {
+                t3 = "G";
+            } else if (key3string.equals("C#/Db") && step3string.equals("2.5 steps")) {
+                t3 = "Ab";
+            } else if (key3string.equals("D") && step3string.equals("2.5 steps")) {
+                t3 = "A";
+            } else if (key3string.equals("Eb/D#") && step3string.equals("2.5 steps")) {
+                t3 = "Bb";
+            } else if (key3string.equals("E") && step3string.equals("2.5 steps")) {
+                t3 = "B";
+            } else if (key3string.equals("F") && step3string.equals("2.5 steps")) {
+                t3 = "C";
+            } else if (key3string.equals("F#/Gb") && step3string.equals("2.5 steps")) {
+                t3 = "C#";
+
+            } else if (key3string.equals("G") && step3string.equals("2.5 steps")) {
+                t3 = "D";
+            } else if (key3string.equals("Ab/G#") && step3string.equals("2.5 steps")) {
+                t3 = "Eb";
+            } else if (key3string.equals("A") && step3string.equals("2.5 steps")) {
+                t3 = "E";
+            } else if (key3string.equals("Bb") && step3string.equals("2.5 steps")) {
+                t3 = "F";
+            } else if (key3string.equals("B") && step3string.equals("2.5 steps")) {
+                t3 = "F#";
+            }
+
+
+            /** For 3 steps */
+
+
+            if (key3string.equals("C") && step3string.equals("3 steps")) {
+                t3 = "F#";
+            } else if (key3string.equals("C#/Db") && step3string.equals("3 steps")) {
+                t3 = "G";
+            } else if (key3string.equals("D") && step3string.equals("3 steps")) {
+                t3 = "Ab";
+            } else if (key3string.equals("Eb/D#") && step3string.equals("3 steps")) {
+                t3 = "A";
+            } else if (key3string.equals("E") && step3string.equals("3 steps")) {
+                t3 = "Bb";
+            } else if (key3string.equals("F") && step3string.equals("3 steps")) {
+                t3 = "B";
+            } else if (key3string.equals("F#/Gb") && step3string.equals("3 steps")) {
+                t3 = "C";
+
+            } else if (key3string.equals("G") && step3string.equals("3 steps")) {
+                t3 = "C#";
+            } else if (key3string.equals("Ab/G#") && step3string.equals("3 steps")) {
+                t3 = "D";
+            } else if (key3string.equals("A") && step3string.equals("3 steps")) {
+                t3 = "Eb";
+            } else if (key3string.equals("Bb") && step3string.equals("3 steps")) {
+                t3 = "E";
+            } else if (key3string.equals("B") && step3string.equals("3 steps")) {
+                t3 = "F";
+            }
+
+
+            /** For 3.5 steps */
+
+
+            if (key3string.equals("C") && step3string.equals("3.5 steps")) {
+                t3 = "F";
+            } else if (key3string.equals("C#/Db") && step3string.equals("3.5 steps")) {
+                t3 = "F#";
+            } else if (key3string.equals("D") && step3string.equals("3.5 steps")) {
+                t3 = "G";
+            } else if (key3string.equals("Eb/D#") && step3string.equals("3.5 steps")) {
+                t3 = "Ab";
+            } else if (key3string.equals("E") && step3string.equals("3.5 steps")) {
+                t3 = "A";
+            } else if (key3string.equals("F") && step3string.equals("3.5 steps")) {
+                t3 = "Bb";
+            } else if (key3string.equals("F#/Gb") && step3string.equals("3.5 steps")) {
+                t3 = "B";
+
+            } else if (key3string.equals("G") && step3string.equals("3.5 steps")) {
+                t3 = "C";
+            } else if (key3string.equals("Ab/G#") && step3string.equals("3.5 steps")) {
+                t3 = "C#";
+            } else if (key3string.equals("A") && step3string.equals("3.5 steps")) {
+                t3 = "D";
+            } else if (key3string.equals("Bb") && step3string.equals("3.5 steps")) {
+                t3 = "Eb";
+            } else if (key3string.equals("B") && step3string.equals("3.5 steps")) {
+                t3 = "E";
+            }
+
+
+            if (step3string.equals("0 steps")){
+                t3=key3string;
+            }
+            return t3;
+
+        }
+
+
+/** For 4th row */
+
+        public String transposed4 (String key4, String step4)
+        {
+
+
+            String key4string = key4;
+            String step4string = step4;
+            String t4 = "";
+
+            /**For the .5 steps */
+
+            if (key4string.equals("C") && step4string.equals("0 steps")) {
+                t4 = "C";
+            }
+        else    if (key4string.equals("C") && step4string.equals(".5 steps")) {
+                t4 = "B";
+            } else if (key4string.equals("C#/Db") && step4string.equals(".5 steps")) {
+                t4 = "C";
+            } else if (key4string.equals("D") && step4string.equals(".5 steps")) {
+                t4 = "C#";
+            } else if (key4string.equals("Eb/D#") && step4string.equals(".5 steps")) {
+                t4 = "D";
+            } else if (key4string.equals("E") && step4string.equals(".5 steps")) {
+                t4 = "Eb";
+            } else if (key4string.equals("F") && step4string.equals(".5 steps")) {
+                t4 = "E";
+            } else if (key4string.equals("F#/Gb") && step4string.equals(".5 steps")) {
+                t4 = "F";
+
+            } else if (key4string.equals("G") && step4string.equals(".5 steps")) {
+                t4 = "F#";
+            } else if (key4string.equals("Ab/G#") && step4string.equals(".5 steps")) {
+                t4 = "G";
+            } else if (key4string.equals("A") && step4string.equals(".5 steps")) {
+                t4 = "Ab";
+            } else if (key4string.equals("Bb") && step4string.equals(".5 steps")) {
+                t4 = "A";
+            } else if (key4string.equals("B") && step4string.equals(".5 steps")) {
+                t4 = "Bb";
+            }
+
+            /**FOR 1 WHOLE STEP */
+
+
+            if (key4string.equals("C") && step4string.equals("1 step")) {
+                t4 = "Bb";
+            } else if (key4string.equals("C#/Db") && step4string.equals("1 step")) {
+                t4 = "B";
+            } else if (key4string.equals("D") && step4string.equals("1 step")) {
+                t4 = "C";
+            } else if (key4string.equals("Eb/D#") && step4string.equals("1 step")) {
+                t4 = "C#";
+            } else if (key4string.equals("E") && step4string.equals("1 step")) {
+                t4 = "D";
+            } else if (key4string.equals("F") && step4string.equals("1 step")) {
+                t4 = "Eb";
+            } else if (key4string.equals("F#/Gb") && step4string.equals("1 step")) {
+                t4 = "E";
+
+            } else if (key4string.equals("G") && step4string.equals("1 step")) {
+                t4 = "F";
+            } else if (key4string.equals("Ab/G#") && step4string.equals("1 step")) {
+                t4 = "F#";
+            } else if (key4string.equals("A") && step4string.equals("1 step")) {
+                t4 = "G";
+            } else if (key4string.equals("Bb") && step4string.equals("1 step")) {
+                t4 = "Ab";
+            } else if (key4string.equals("B") && step4string.equals("1 step")) {
+                t4 = "A";
+            }
+
+
+            /** FOR 1.5 STEPS */
+
+            if (key4string.equals("C") && step4string.equals("1.5 steps")) {
+                t4 = "A";
+            } else if (key4string.equals("C#/Db") && step4string.equals("1.5 steps")) {
+                t4 = "Bb";
+            } else if (key4string.equals("D") && step4string.equals("1.5 steps")) {
+                t4 = "B";
+            } else if (key4string.equals("Eb/D#") && step4string.equals("1.5 steps")) {
+                t4 = "C";
+            } else if (key4string.equals("E") && step4string.equals("1.5 steps")) {
+                t4 = "C#";
+            } else if (key4string.equals("F") && step4string.equals("1.5 steps")) {
+                t4 = "D";
+            } else if (key4string.equals("F#/Gb") && step4string.equals("1.5 steps")) {
+                t4 = "Eb";
+
+            } else if (key4string.equals("G") && step4string.equals("1.5 steps")) {
+                t4 = "E";
+            } else if (key4string.equals("Ab/G#") && step4string.equals("1.5 steps")) {
+                t4 = "F";
+            } else if (key4string.equals("A") && step4string.equals("1.5 steps")) {
+                t4 = "F#";
+            } else if (key4string.equals("Bb") && step4string.equals("1.5 steps")) {
+                t4 = "G";
+            } else if (key4string.equals("B") && step4string.equals("1.5 steps")) {
+                t4 = "Ab";
+            }
+
+
+            /** FOR 2 STEPS */
+
+
+            if (key4string.equals("C") && step4string.equals("2 steps")) {
+                t4 = "Ab";
+            } else if (key4string.equals("C#/Db") && step4string.equals("2 steps")) {
+                t4 = "A";
+            } else if (key4string.equals("D") && step4string.equals("2 steps")) {
+                t4 = "Bb";
+            } else if (key4string.equals("Eb/D#") && step4string.equals("2 steps")) {
+                t4 = "B";
+            } else if (key4string.equals("E") && step4string.equals("2 steps")) {
+                t4 = "C";
+            } else if (key4string.equals("F") && step4string.equals("2 steps")) {
+                t4 = "C#";
+            } else if (key4string.equals("F#/Gb") && step4string.equals("2 steps")) {
+                t4 = "D";
+
+            } else if (key4string.equals("G") && step4string.equals("2 steps")) {
+                t4 = "Eb";
+            } else if (key4string.equals("Ab/G#") && step4string.equals("2 steps")) {
+                t4 = "E";
+            } else if (key4string.equals("A") && step4string.equals("2 steps")) {
+                t4 = "F";
+            } else if (key4string.equals("Bb") && step4string.equals("2 steps")) {
+                t4 = "F#";
+            } else if (key4string.equals("B") && step4string.equals("2 steps")) {
+                t4 = "G";
+            }
+
+
+            /** for 2.5 steps */
+
+
+            if (key4string.equals("C") && step4string.equals("2.5 steps")) {
+                t4 = "G";
+            } else if (key4string.equals("C#/Db") && step4string.equals("2.5 steps")) {
+                t4 = "Ab";
+            } else if (key4string.equals("D") && step4string.equals("2.5 steps")) {
+                t4 = "A";
+            } else if (key4string.equals("Eb/D#") && step4string.equals("2.5 steps")) {
+                t4 = "Bb";
+            } else if (key4string.equals("E") && step4string.equals("2.5 steps")) {
+                t4 = "B";
+            } else if (key4string.equals("F") && step4string.equals("2.5 steps")) {
+                t4 = "C";
+            } else if (key4string.equals("F#/Gb") && step4string.equals("2.5 steps")) {
+                t4 = "C#";
+
+            } else if (key4string.equals("G") && step4string.equals("2.5 steps")) {
+                t4 = "D";
+            } else if (key4string.equals("Ab/G#") && step4string.equals("2.5 steps")) {
+                t4 = "Eb";
+            } else if (key4string.equals("A") && step4string.equals("2.5 steps")) {
+                t4 = "E";
+            } else if (key4string.equals("Bb") && step4string.equals("2.5 steps")) {
+                t4 = "F";
+            } else if (key4string.equals("B") && step4string.equals("2.5 steps")) {
+                t4 = "F#";
+            }
+
+
+            /** For 3 steps */
+
+
+            if (key4string.equals("C") && step4string.equals("3 steps")) {
+                t4 = "F#";
+            } else if (key4string.equals("C#/Db") && step4string.equals("3 steps")) {
+                t4 = "G";
+            } else if (key4string.equals("D") && step4string.equals("3 steps")) {
+                t4 = "Ab";
+            } else if (key4string.equals("Eb/D#") && step4string.equals("3 steps")) {
+                t4 = "A";
+            } else if (key4string.equals("E") && step4string.equals("3 steps")) {
+                t4 = "Bb";
+            } else if (key4string.equals("F") && step4string.equals("3 steps")) {
+                t4 = "B";
+            } else if (key4string.equals("F#/Gb") && step4string.equals("3 steps")) {
+                t4 = "C";
+
+            } else if (key4string.equals("G") && step4string.equals("3 steps")) {
+                t4 = "C#";
+            } else if (key4string.equals("Ab/G#") && step4string.equals("3 steps")) {
+                t4 = "D";
+            } else if (key4string.equals("A") && step4string.equals("3 steps")) {
+                t4 = "Eb";
+            } else if (key4string.equals("Bb") && step4string.equals("3 steps")) {
+                t4 = "E";
+            } else if (key4string.equals("B") && step4string.equals("3 steps")) {
+                t4 = "F";
+            }
+
+
+            /** For 3.5 steps */
+
+
+            if (key4string.equals("C") && step4string.equals("3.5 steps")) {
+                t4 = "F";
+            } else if (key4string.equals("C#/Db") && step4string.equals("3.5 steps")) {
+                t4 = "F#";
+            } else if (key4string.equals("D") && step4string.equals("3.5 steps")) {
+                t4 = "G";
+            } else if (key4string.equals("Eb/D#") && step4string.equals("3.5 steps")) {
+                t4 = "Ab";
+            } else if (key4string.equals("E") && step4string.equals("3.5 steps")) {
+                t4 = "A";
+            } else if (key4string.equals("F") && step4string.equals("3.5 steps")) {
+                t4 = "Bb";
+            } else if (key4string.equals("F#/Gb") && step4string.equals("3.5 steps")) {
+                t4 = "B";
+
+            } else if (key4string.equals("G") && step4string.equals("3.5 steps")) {
+                t4 = "C";
+            } else if (key4string.equals("Ab/G#") && step4string.equals("3.5 steps")) {
+                t4 = "C#";
+            } else if (key4string.equals("A") && step4string.equals("3.5 steps")) {
+                t4 = "D";
+            } else if (key4string.equals("Bb") && step4string.equals("3.5 steps")) {
+                t4 = "Eb";
+            } else if (key4string.equals("B") && step4string.equals("3.5 steps")) {
+                t4 = "E";
+            }
+
+            if (step4string.equals("0 steps")){
+                t4=key4string;
+            }
+
+            return t4;
+
+        }
+
+
+/** For 5th row */
+
+        public String transposed5 (String key5, String step5)
+        {
+
+
+            String key5string = key5;
+            String step5string = step5;
+            String t5 = "";
+
+            /**For the .5 steps */
+            if (key5string.equals("C") && step5string.equals("0 steps")) {
+                t5 = "C";
+            }
+
+     else       if (key5string.equals("C") && step5string.equals(".5 steps")) {
+                t5 = "B";
+            } else if (key5string.equals("C#/Db") && step5string.equals(".5 steps")) {
+                t5 = "C";
+            } else if (key5string.equals("D") && step5string.equals(".5 steps")) {
+                t5 = "C#";
+            } else if (key5string.equals("Eb/D#") && step5string.equals(".5 steps")) {
+                t5 = "D";
+            } else if (key5string.equals("E") && step5string.equals(".5 steps")) {
+                t5 = "Eb";
+            } else if (key5string.equals("F") && step5string.equals(".5 steps")) {
+                t5 = "E";
+            } else if (key5string.equals("F#/Gb") && step5string.equals(".5 steps")) {
+                t5 = "F";
+
+            } else if (key5string.equals("G") && step5string.equals(".5 steps")) {
+                t5 = "F#";
+            } else if (key5string.equals("Ab/G#") && step5string.equals(".5 steps")) {
+                t5 = "G";
+            } else if (key5string.equals("A") && step5string.equals(".5 steps")) {
+                t5 = "Ab";
+            } else if (key5string.equals("Bb") && step5string.equals(".5 steps")) {
+                t5 = "A";
+            } else if (key5string.equals("B") && step5string.equals(".5 steps")) {
+                t5 = "Bb";
+            }
+
+            /**FOR 1 WHOLE STEP */
+
+
+            if (key5string.equals("C") && step5string.equals("1 step")) {
+                t5 = "Bb";
+            } else if (key5string.equals("C#/Db") && step5string.equals("1 step")) {
+                t5 = "B";
+            } else if (key5string.equals("D") && step5string.equals("1 step")) {
+                t5 = "C";
+            } else if (key5string.equals("Eb/D#") && step5string.equals("1 step")) {
+                t5 = "C#";
+            } else if (key5string.equals("E") && step5string.equals("1 step")) {
+                t5 = "D";
+            } else if (key5string.equals("F") && step5string.equals("1 step")) {
+                t5 = "Eb";
+            } else if (key5string.equals("F#/Gb") && step5string.equals("1 step")) {
+                t5 = "E";
+
+            } else if (key5string.equals("G") && step5string.equals("1 step")) {
+                t5 = "F";
+            } else if (key5string.equals("Ab/G#") && step5string.equals("1 step")) {
+                t5 = "F#";
+            } else if (key5string.equals("A") && step5string.equals("1 step")) {
+                t5 = "G";
+            } else if (key5string.equals("Bb") && step5string.equals("1 step")) {
+                t5 = "Ab";
+            } else if (key5string.equals("B") && step5string.equals("1 step")) {
+                t5 = "A";
+            }
+
+
+            /** FOR 1.5 STEPS */
+
+            if (key5string.equals("C") && step5string.equals("1.5 steps")) {
+                t5 = "A";
+            } else if (key5string.equals("C#/Db") && step5string.equals("1.5 steps")) {
+                t5 = "Bb";
+            } else if (key5string.equals("D") && step5string.equals("1.5 steps")) {
+                t5 = "B";
+            } else if (key5string.equals("Eb/D#") && step5string.equals("1.5 steps")) {
+                t5 = "C";
+            } else if (key5string.equals("E") && step5string.equals("1.5 steps")) {
+                t5 = "C#";
+            } else if (key5string.equals("F") && step5string.equals("1.5 steps")) {
+                t5 = "D";
+            } else if (key5string.equals("F#/Gb") && step5string.equals("1.5 steps")) {
+                t5 = "Eb";
+
+            } else if (key5string.equals("G") && step5string.equals("1.5 steps")) {
+                t5 = "E";
+            } else if (key5string.equals("Ab/G#") && step5string.equals("1.5 steps")) {
+                t5 = "F";
+            } else if (key5string.equals("A") && step5string.equals("1.5 steps")) {
+                t5 = "F#";
+            } else if (key5string.equals("Bb") && step5string.equals("1.5 steps")) {
+                t5 = "G";
+            } else if (key5string.equals("B") && step5string.equals("1.5 steps")) {
+                t5 = "Ab";
+            }
+
+
+            /** FOR 2 STEPS */
+
+
+            if (key5string.equals("C") && step5string.equals("2 steps")) {
+                t5 = "Ab";
+            } else if (key5string.equals("C#/Db") && step5string.equals("2 steps")) {
+                t5 = "A";
+            } else if (key5string.equals("D") && step5string.equals("2 steps")) {
+                t5 = "Bb";
+            } else if (key5string.equals("Eb/D#") && step5string.equals("2 steps")) {
+                t5 = "B";
+            } else if (key5string.equals("E") && step5string.equals("2 steps")) {
+                t5 = "C";
+            } else if (key5string.equals("F") && step5string.equals("2 steps")) {
+                t5 = "C#";
+            } else if (key5string.equals("F#/Gb") && step5string.equals("2 steps")) {
+                t5 = "D";
+
+            } else if (key5string.equals("G") && step5string.equals("2 steps")) {
+                t5 = "Eb";
+            } else if (key5string.equals("Ab/G#") && step5string.equals("2 steps")) {
+                t5 = "E";
+            } else if (key5string.equals("A") && step5string.equals("2 steps")) {
+                t5 = "F";
+            } else if (key5string.equals("Bb") && step5string.equals("2 steps")) {
+                t5 = "F#";
+            } else if (key5string.equals("B") && step5string.equals("2 steps")) {
+                t5 = "G";
+            }
+
+
+            /** for 2.5 steps */
+
+
+            if (key5string.equals("C") && step5string.equals("2.5 steps")) {
+                t5 = "G";
+            } else if (key5string.equals("C#/Db") && step5string.equals("2.5 steps")) {
+                t5 = "Ab";
+            } else if (key5string.equals("D") && step5string.equals("2.5 steps")) {
+                t5 = "A";
+            } else if (key5string.equals("Eb/D#") && step5string.equals("2.5 steps")) {
+                t5 = "Bb";
+            } else if (key5string.equals("E") && step5string.equals("2.5 steps")) {
+                t5 = "B";
+            } else if (key5string.equals("F") && step5string.equals("2.5 steps")) {
+                t5 = "C";
+            } else if (key5string.equals("F#/Gb") && step5string.equals("2.5 steps")) {
+                t5 = "C#";
+
+            } else if (key5string.equals("G") && step5string.equals("2.5 steps")) {
+                t5 = "D";
+            } else if (key5string.equals("Ab/G#") && step5string.equals("2.5 steps")) {
+                t5 = "Eb";
+            } else if (key5string.equals("A") && step5string.equals("2.5 steps")) {
+                t5 = "E";
+            } else if (key5string.equals("Bb") && step5string.equals("2.5 steps")) {
+                t5 = "F";
+            } else if (key5string.equals("B") && step5string.equals("2.5 steps")) {
+                t5 = "F#";
+            }
+
+
+            /** For 3 steps */
+
+
+            if (key5string.equals("C") && step5string.equals("3 steps")) {
+                t5 = "F#";
+            } else if (key5string.equals("C#/Db") && step5string.equals("3 steps")) {
+                t5 = "G";
+            } else if (key5string.equals("D") && step5string.equals("3 steps")) {
+                t5 = "Ab";
+            } else if (key5string.equals("Eb/D#") && step5string.equals("3 steps")) {
+                t5 = "A";
+            } else if (key5string.equals("E") && step5string.equals("3 steps")) {
+                t5 = "Bb";
+            } else if (key5string.equals("F") && step5string.equals("3 steps")) {
+                t5 = "B";
+            } else if (key5string.equals("F#/Gb") && step5string.equals("3 steps")) {
+                t5 = "C";
+
+            } else if (key5string.equals("G") && step5string.equals("3 steps")) {
+                t5 = "C#";
+            } else if (key5string.equals("Ab/G#") && step5string.equals("3 steps")) {
+                t5 = "D";
+            } else if (key5string.equals("A") && step5string.equals("3 steps")) {
+                t5 = "Eb";
+            } else if (key5string.equals("Bb") && step5string.equals("3 steps")) {
+                t5 = "E";
+            } else if (key5string.equals("B") && step5string.equals("3 steps")) {
+                t5 = "F";
+            }
+
+
+            /** For 3.5 steps */
+
+
+            if (key5string.equals("C") && step5string.equals("3.5 steps")) {
+                t5 = "F";
+            } else if (key5string.equals("C#/Db") && step5string.equals("3.5 steps")) {
+                t5 = "F#";
+            } else if (key5string.equals("D") && step5string.equals("3.5 steps")) {
+                t5 = "G";
+            } else if (key5string.equals("Eb/D#") && step5string.equals("3.5 steps")) {
+                t5 = "Ab";
+            } else if (key5string.equals("E") && step5string.equals("3.5 steps")) {
+                t5 = "A";
+            } else if (key5string.equals("F") && step5string.equals("3.5 steps")) {
+                t5 = "Bb";
+            } else if (key5string.equals("F#/Gb") && step5string.equals("3.5 steps")) {
+                t5 = "B";
+
+            } else if (key5string.equals("G") && step5string.equals("3.5 steps")) {
+                t5 = "C";
+            } else if (key5string.equals("Ab/G#") && step5string.equals("3.5 steps")) {
+                t5 = "C#";
+            } else if (key5string.equals("A") && step5string.equals("3.5 steps")) {
+                t5 = "D";
+            } else if (key5string.equals("Bb") && step5string.equals("3.5 steps")) {
+                t5 = "Eb";
+            } else if (key5string.equals("B") && step5string.equals("3.5 steps")) {
+                t5 = "E";
+            }
+
+
+            if (step5string.equals("0 steps")){
+                t5=key5string;
+            }
+            return t5;
+
+        }
+
+    public String transposed6 (String key6, String step6)
+    {
+
+
+        String key6string = key6;
+        String step6string = step6;
+        String t6 = "";
+
+        /**For the .5 steps */
+
+        if (key6string.equals("C") && step6string.equals("0 steps")) {
+            t6 = "C";
+        }
+    else    if (key6string.equals("C") && step6string.equals(".5 steps")) {
+            t6 = "B";
+        } else if (key6string.equals("C#/Db") && step6string.equals(".5 steps")) {
+            t6 = "C";
+        } else if (key6string.equals("D") && step6string.equals(".5 steps")) {
+            t6 = "C#";
+        } else if (key6string.equals("Eb/D#") && step6string.equals(".5 steps")) {
+            t6 = "D";
+        } else if (key6string.equals("E") && step6string.equals(".5 steps")) {
+            t6 = "Eb";
+        } else if (key6string.equals("F") && step6string.equals(".5 steps")) {
+            t6 = "E";
+        } else if (key6string.equals("F#/Gb") && step6string.equals(".5 steps")) {
+            t6 = "F";
+
+        } else if (key6string.equals("G") && step6string.equals(".5 steps")) {
+            t6 = "F#";
+        } else if (key6string.equals("Ab/G#") && step6string.equals(".5 steps")) {
+            t6 = "G";
+        } else if (key6string.equals("A") && step6string.equals(".5 steps")) {
+            t6 = "Ab";
+        } else if (key6string.equals("Bb") && step6string.equals(".5 steps")) {
+            t6 = "A";
+        } else if (key6string.equals("B") && step6string.equals(".5 steps")) {
+            t6 = "Bb";
+        }
+
+        /**FOR 1 WHOLE STEP */
+
+
+        if (key6string.equals("C") && step6string.equals("1 step")) {
+            t6 = "Bb";
+        } else if (key6string.equals("C#/Db") && step6string.equals("1 step")) {
+            t6 = "B";
+        } else if (key6string.equals("D") && step6string.equals("1 step")) {
+            t6 = "C";
+        } else if (key6string.equals("Eb/D#") && step6string.equals("1 step")) {
+            t6 = "C#";
+        } else if (key6string.equals("E") && step6string.equals("1 step")) {
+            t6 = "D";
+        } else if (key6string.equals("F") && step6string.equals("1 step")) {
+            t6 = "Eb";
+        } else if (key6string.equals("F#/Gb") && step6string.equals("1 step")) {
+            t6 = "E";
+
+        } else if (key6string.equals("G") && step6string.equals("1 step")) {
+            t6 = "F";
+        } else if (key6string.equals("Ab/G#") && step6string.equals("1 step")) {
+            t6 = "F#";
+        } else if (key6string.equals("A") && step6string.equals("1 step")) {
+            t6 = "G";
+        } else if (key6string.equals("Bb") && step6string.equals("1 step")) {
+            t6 = "Ab";
+        } else if (key6string.equals("B") && step6string.equals("1 step")) {
+            t6 = "A";
+        }
+
+
+        /** FOR 1.5 STEPS */
+
+        if (key6string.equals("C") && step6string.equals("1.5 steps")) {
+            t6 = "A";
+        } else if (key6string.equals("C#/Db") && step6string.equals("1.5 steps")) {
+            t6 = "Bb";
+        } else if (key6string.equals("D") && step6string.equals("1.5 steps")) {
+            t6 = "B";
+        } else if (key6string.equals("Eb/D#") && step6string.equals("1.5 steps")) {
+            t6 = "C";
+        } else if (key6string.equals("E") && step6string.equals("1.5 steps")) {
+            t6 = "C#";
+        } else if (key6string.equals("F") && step6string.equals("1.5 steps")) {
+            t6 = "D";
+        } else if (key6string.equals("F#/Gb") && step6string.equals("1.5 steps")) {
+            t6 = "Eb";
+
+        } else if (key6string.equals("G") && step6string.equals("1.5 steps")) {
+            t6 = "E";
+        } else if (key6string.equals("Ab/G#") && step6string.equals("1.5 steps")) {
+            t6 = "F";
+        } else if (key6string.equals("A") && step6string.equals("1.5 steps")) {
+            t6 = "F#";
+        } else if (key6string.equals("Bb") && step6string.equals("1.5 steps")) {
+            t6 = "G";
+        } else if (key6string.equals("B") && step6string.equals("1.5 steps")) {
+            t6 = "Ab";
+        }
+
+
+        /** FOR 2 STEPS */
+
+
+        if (key6string.equals("C") && step6string.equals("2 steps")) {
+            t6 = "Ab";
+        } else if (key6string.equals("C#/Db") && step6string.equals("2 steps")) {
+            t6 = "A";
+        } else if (key6string.equals("D") && step6string.equals("2 steps")) {
+            t6 = "Bb";
+        } else if (key6string.equals("Eb/D#") && step6string.equals("2 steps")) {
+            t6 = "B";
+        } else if (key6string.equals("E") && step6string.equals("2 steps")) {
+            t6 = "C";
+        } else if (key6string.equals("F") && step6string.equals("2 steps")) {
+            t6 = "C#";
+        } else if (key6string.equals("F#/Gb") && step6string.equals("2 steps")) {
+            t6 = "D";
+
+        } else if (key6string.equals("G") && step6string.equals("2 steps")) {
+            t6 = "Eb";
+        } else if (key6string.equals("Ab/G#") && step6string.equals("2 steps")) {
+            t6 = "E";
+        } else if (key6string.equals("A") && step6string.equals("2 steps")) {
+            t6 = "F";
+        } else if (key6string.equals("Bb") && step6string.equals("2 steps")) {
+            t6 = "F#";
+        } else if (key6string.equals("B") && step6string.equals("2 steps")) {
+            t6 = "G";
+        }
+
+
+        /** for 2.5 steps */
+
+
+        if (key6string.equals("C") && step6string.equals("2.5 steps")) {
+            t6 = "G";
+        } else if (key6string.equals("C#/Db") && step6string.equals("2.5 steps")) {
+            t6 = "Ab";
+        } else if (key6string.equals("D") && step6string.equals("2.5 steps")) {
+            t6 = "A";
+        } else if (key6string.equals("Eb/D#") && step6string.equals("2.5 steps")) {
+            t6 = "Bb";
+        } else if (key6string.equals("E") && step6string.equals("2.5 steps")) {
+            t6 = "B";
+        } else if (key6string.equals("F") && step6string.equals("2.5 steps")) {
+            t6 = "C";
+        } else if (key6string.equals("F#/Gb") && step6string.equals("2.5 steps")) {
+            t6 = "C#";
+
+        } else if (key6string.equals("G") && step6string.equals("2.5 steps")) {
+            t6 = "D";
+        } else if (key6string.equals("Ab/G#") && step6string.equals("2.5 steps")) {
+            t6 = "Eb";
+        } else if (key6string.equals("A") && step6string.equals("2.5 steps")) {
+            t6 = "E";
+        } else if (key6string.equals("Bb") && step6string.equals("2.5 steps")) {
+            t6 = "F";
+        } else if (key6string.equals("B") && step6string.equals("2.5 steps")) {
+            t6 = "F#";
+        }
+
+
+        /** For 3 steps */
+
+
+        if (key6string.equals("C") && step6string.equals("3 steps")) {
+            t6 = "F#";
+        } else if (key6string.equals("C#/Db") && step6string.equals("3 steps")) {
+            t6 = "G";
+        } else if (key6string.equals("D") && step6string.equals("3 steps")) {
+            t6 = "Ab";
+        } else if (key6string.equals("Eb/D#") && step6string.equals("3 steps")) {
+            t6 = "A";
+        } else if (key6string.equals("E") && step6string.equals("3 steps")) {
+            t6 = "Bb";
+        } else if (key6string.equals("F") && step6string.equals("3 steps")) {
+            t6 = "B";
+        } else if (key6string.equals("F#/Gb") && step6string.equals("3 steps")) {
+            t6 = "C";
+
+        } else if (key6string.equals("G") && step6string.equals("3 steps")) {
+            t6 = "C#";
+        } else if (key6string.equals("Ab/G#") && step6string.equals("3 steps")) {
+            t6 = "D";
+        } else if (key6string.equals("A") && step6string.equals("3 steps")) {
+            t6 = "Eb";
+        } else if (key6string.equals("Bb") && step6string.equals("3 steps")) {
+            t6 = "E";
+        } else if (key6string.equals("B") && step6string.equals("3 steps")) {
+            t6 = "F";
+        }
+
+
+        /** For 3.5 steps */
+
+
+        if (key6string.equals("C") && step6string.equals("3.5 steps")) {
+            t6 = "F";
+        } else if (key6string.equals("C#/Db") && step6string.equals("3.5 steps")) {
+            t6 = "F#";
+        } else if (key6string.equals("D") && step6string.equals("3.5 steps")) {
+            t6 = "G";
+        } else if (key6string.equals("Eb/D#") && step6string.equals("3.5 steps")) {
+            t6 = "Ab";
+        } else if (key6string.equals("E") && step6string.equals("3.5 steps")) {
+            t6 = "A";
+        } else if (key6string.equals("F") && step6string.equals("3.5 steps")) {
+            t6 = "Bb";
+        } else if (key6string.equals("F#/Gb") && step6string.equals("3.5 steps")) {
+            t6 = "B";
+
+        } else if (key6string.equals("G") && step6string.equals("3.5 steps")) {
+            t6 = "C";
+        } else if (key6string.equals("Ab/G#") && step6string.equals("3.5 steps")) {
+            t6 = "C#";
+        } else if (key6string.equals("A") && step6string.equals("3.5 steps")) {
+            t6 = "D";
+        } else if (key6string.equals("Bb") && step6string.equals("3.5 steps")) {
+            t6 = "Eb";
+        } else if (key6string.equals("B") && step6string.equals("3.5 steps")) {
+            t6 = "E";
+        }
+
+     if (step6string.equals("0 steps")){
+            t6=key6string;
+     }
+        return t6;
+
+
+    }
+
+
+/** for the 6th row */
+
+
+}
