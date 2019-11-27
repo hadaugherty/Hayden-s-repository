@@ -1,0 +1,69 @@
+package com.example.android.courtcounter;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+int scoreA = 0;
+int scoreB = 0;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+    }
+
+    /**
+     * Displays the given score for Team A.
+     */
+
+    public void displayForTeamA(int scoreA) {
+        TextView scoreView = (TextView) findViewById(R.id.TeamAScore);
+        scoreView.setText(String.valueOf(scoreA));
+
+    }
+    public void displayForTeamB(int scoreB) {
+        TextView scoreView = (TextView) findViewById(R.id.TeamBScore);
+        scoreView.setText(String.valueOf(scoreB));
+
+    }
+
+    public void three_point_shotA (View view) {
+        scoreA = scoreA +3;
+        displayForTeamA(scoreA);
+    }
+    public void three_point_shotB (View view) {
+        scoreB = scoreB +3;
+        displayForTeamB(scoreB);
+    }
+
+
+    public void two_point_shot (View view) {
+        scoreA = scoreA + 2;
+        displayForTeamA(scoreA);
+
+    }
+    public void two_point_shotB (View view) {
+        scoreB = scoreB + 2;
+        displayForTeamB(scoreB);
+
+    }
+
+    public void free_throw_shot (View view) {
+        scoreA = scoreA +1;
+        displayForTeamA(scoreA);
+    }
+    public void free_throw_shotB (View view) {
+        scoreB = scoreB +1;
+        displayForTeamB(scoreB);
+    }
+    public void resetscore (View view){
+
+        scoreA=0;
+        scoreB=0;
+        displayForTeamA(scoreA);
+        displayForTeamB(scoreB);
+    }
+}
